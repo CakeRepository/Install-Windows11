@@ -1,5 +1,28 @@
-function Install-Windows11{
-<#
+<#PSScriptInfo
+
+.VERSION 1.0
+
+.GUID f39d31e1-9122-4ddd-9360-d8ec361e5a06
+
+.AUTHOR Justin Trantham
+
+.TAGS 
+Windows 11
+Windows Upgrade
+Automation
+
+.LICENSEURI 
+https://github.com/CakeRepository/Install-Windows11/blob/main/LICENSE
+
+.PROJECTURI 
+https://github.com/CakeRepository/Install-Windows11
+
+.RELEASENOTES
+
+
+#>
+
+<# 
     .SYNOPSIS
         Automatically Download/Install Windows 11 quickly and easily with powershell and a URL
     .DESCRIPTION
@@ -17,11 +40,9 @@ function Install-Windows11{
         Install-Windows11 -DownloadURL "https://software-download.microsoft.com/pr/Win11_English_x64.iso?t=91df36a5-c6e0-46b5-8ad8-960c29aae6a4&e=1634707003&h=1f1e014b5f7389e51b98958c9c2d0949"
         Install-Windows11 -arguments "/auto upgrade /DynamicUpdate Disable" -DownloadURL "https://software-download.microsoft.com/pr/Win11_English_x64.iso?t=91df36a5-c6e0-46b5-8ad8-960c29aae6a4&e=1634707003&h=1f1e014b5f7389e51b98958c9c2d0949"
         Install-Windows11 -DownloadPath "C:\temp\win11.iso" `
-            -DownloadURL "https://software-download.microsoft.com/pr/Win11_English_x64.iso?t=91df36a5-c6e0-46b5-8ad8-960c29aae6a4&e=1634707003&h=1f1e014b5f7389e51b98958c9c2d0949" `
-            -arguments "/auto upgrade /quiet"
-   #>
-[CmdletBinding(DefaultParameterSetName='DefaultConfiguration')]
-    param(
+            -DownloadURL "https://software-download.microsoft.com/pr/Win11_En
+#> 
+param(
         [Parameter(Mandatory=$true, HelpMessage="Specify the URL for Windows 11 ISO")]
         [string]$DownloadURL,
         [Parameter(Mandatory=$true, HelpMessage="Specify path for the Windows 11 ISO to be downloaded")]
@@ -30,13 +51,8 @@ function Install-Windows11{
         [Parameter(Mandatory=$true, HelpMessage="Specify Arguments to run with setup.exe")]
         [string]$Arguments = "/auto upgrade /DynamicUpdate Disable /quiet",
     
-        [Switch]$Local
-    )
-    Process{
-        foreach($key in $PSBoundParameters.keys){
-            Set-Variable -Name $key -Value $PSBoundParameters."$key" -Scope 0
-        }
-
+)
+Process{
         Write-Host "Downloading ISO from $DownloadURL to $DownloadPath"
         $wc = New-Object System.Net.WebClient
         $wc.DownloadFile($DownloadURL, $DownloadPath)
@@ -49,8 +65,9 @@ function Install-Windows11{
 
         Write-Host "Starting Windows 11 Upgrade"
         Start-Process cmd.exe -Wait -ArgumentList '/c $setup ' + $Arguments
-    }
-    End{
-    Write-Host "Finished installing - if errors run without the /quiet command"
-    }
 }
+End{
+    Write-Host "Finished installing - if errors run without the /quiet command"
+}
+
+
