@@ -1,40 +1,20 @@
-
 <#PSScriptInfo
-
-.VERSION 1.0
-
+.VERSION 1.1
 .GUID 1db3a669-88dc-44fd-a9cb-8d029702be66
-
 .AUTHOR takescake@outlook.com
-
-.COMPANYNAME 
-
-.COPYRIGHT 
-
 .TAGS 
-
-.LICENSEURI 
-
-.PROJECTURI 
-
-.ICONURI 
-
-.EXTERNALMODULEDEPENDENCIES 
-
-.REQUIREDSCRIPTS 
-
-.EXTERNALSCRIPTDEPENDENCIES 
-
+ Windows 11
+ Windows Upgrade
+ Automation
+.LICENSEURI https://github.com/CakeRepository/Install-Windows11/blob/main/LICENSE
+.PROJECTURI https://github.com/CakeRepository/Install-Windows11
 .RELEASENOTES
-
-
+ 1.1 - Updated URI's for project 
 #>
 
 <# 
-
 .DESCRIPTION 
  Downloads the Windows 11 ISO from the any URL hosting it, mounts it to the Windows Operating system, and then attempts to install it will fail if it doesn't meet the strict Windows 11 requirements. 
-
 .PARAMETER arguments
  These are the arguments to give to the Windows 11 setup.exe after it is mounted.
  These switches can be found here - https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-setup-command-line-options
