@@ -1,4 +1,4 @@
-# Windows s11 Upgrade Script
+# Windows 11 Upgrade Script
 ## SYNOPSIS  
 Automatically Download/Install Windows 11 quickly and easily with powershell and a URL  
 ## DESCRIPTION  
