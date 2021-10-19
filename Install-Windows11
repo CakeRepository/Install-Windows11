@@ -4,9 +4,6 @@ function Install-Windows11{
         Automatically Download/Install Windows 11 quickly and easily with powershell and a URL
     .DESCRIPTION
         Downloads the Windows 11 ISO from the any URL hosting it, mounts it to the Windows Operating system, and then attempts to install it will fail if it doesn't meet the strict Windows 11 requirements.
-    .PARAMETER UserOUPath
-        Used to specify the OU that the user accounts will be created in. Must be in distinguished name format and in quotes.
-        Example: "OU=End-Users,OU=Users,OU=Client Name,DC=AD,DC=Contoso,DC=local"
     .PARAMETER arguments
         These are the arguments to give to the Windows 11 setup.exe after it is mounted.
         These switches can be found here - https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-setup-command-line-options
