@@ -53,10 +53,10 @@
 param(
         [Parameter(Mandatory=$true, HelpMessage="Specify the URL for Windows 11 ISO")]
         [string]$DownloadURL,
-        [Parameter(Mandatory=$true, HelpMessage="Specify path for the Windows 11 ISO to be downloaded")]
+        [Parameter(Mandatory=$false, HelpMessage="Specify path for the Windows 11 ISO to be downloaded")]
         [ValidateScript({Test-Path $_ -IsValid})]
         [string]$DownloadPath = "C:\windows\temp\win11.iso",
-        [Parameter(Mandatory=$true, HelpMessage="Specify Arguments to run with setup.exe")]
+        [Parameter(Mandatory=$false, HelpMessage="Specify Arguments to run with setup.exe")]
         [string]$Arguments = "/auto upgrade /DynamicUpdate Disable /quiet"
     
 )
@@ -71,6 +71,6 @@ $vol = Mount-DiskImage -ImagePath $DownloadPath  -PassThru |
 $setup = '{0}:\setup.exe' -f $vol.DriveLetter
 
 Write-Host "Starting Windows 11 Upgrade"
-Start-Process cmd.exe -Wait -ArgumentList '/c $setup ' + $Arguments
+Start-Process cmd.exe -Wait -ArgumentList "/c $setup $Arguments"
 
 Write-Host "Finished installing - if errors run without the /quiet command"
